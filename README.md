@@ -1,9 +1,7 @@
 # 📰 Smart News App
 
 ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
-![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
-
-A mobile application developed for the **CS-473 Mobile Application Development 2** Mid Lab Sessional (Spring 2026). 
+![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white) 
 
 Smart News is an intelligent, offline-capable news reader that fetches the latest headlines, provides AI-driven summaries, and performs entirely on-device sentiment analysis to track the emotional tone of the news you consume.
 
@@ -16,9 +14,6 @@ Smart News is an intelligent, offline-capable news reader that fetches the lates
 * **📊 Analytics Dashboard:** A dedicated visualization screen displaying:
     * Total articles processed.
     * Interactive charts breaking down the ratio of Positive, Negative, and Neutral articles.
-
-## 📱 Screenshots
-*(Add screenshots of your UI here later: News List, Detail View, and Analytics Dashboard)*
 
 ## 🏗️ Architecture & Implementation Details
 
