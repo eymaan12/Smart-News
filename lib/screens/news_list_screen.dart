@@ -86,18 +86,9 @@ class _NewsListScreenState extends State<NewsListScreen> {
                                 }
                                 final article = provider.articles[index];
                                 return Card(
-                                  margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                  child: ListTile(
-                                    leading: CachedNetworkImage(
-                                      imageUrl: article.imageUrl,
-                                      width: 80,
-                                      height: 80,
-                                      fit: BoxFit.cover,
-                                      placeholder: (context, url) => const CircularProgressIndicator(),
-                                      errorWidget: (context, url, error) => const Icon(Icons.error),
-                                    ),
-                                    title: Text(article.title, maxLines: 2, overflow: TextOverflow.ellipsis),
-                                    subtitle: Text(article.source),
+                                  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                                  clipBehavior: Clip.antiAlias,
+                                  child: InkWell(
                                     onTap: () {
                                       Navigator.push(
                                         context,
@@ -106,6 +97,68 @@ class _NewsListScreenState extends State<NewsListScreen> {
                                         ),
                                       );
                                     },
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Hero(
+                                          tag: 'article_image_${article.imageUrl}',
+                                          child: CachedNetworkImage(
+                                            imageUrl: article.imageUrl,
+                                            width: 120,
+                                            height: 120,
+                                            fit: BoxFit.cover,
+                                            placeholder: (context, url) => Container(
+                                              width: 120,
+                                              height: 120,
+                                              color: Colors.grey.shade100,
+                                              child: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
+                                            ),
+                                            errorWidget: (context, url, error) => Container(
+                                              width: 120,
+                                              height: 120,
+                                              color: Colors.grey.shade100,
+                                              child: const Icon(Icons.broken_image, color: Colors.grey),
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(12.0),
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  article.title,
+                                                  maxLines: 2,
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                    height: 1.3,
+                                                  ),
+                                                ),
+                                                const SizedBox(height: 12),
+                                                Container(
+                                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                                  decoration: BoxDecoration(
+                                                    color: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
+                                                    borderRadius: BorderRadius.circular(4),
+                                                  ),
+                                                  child: Text(
+                                                    article.source.toUpperCase(),
+                                                    style: TextStyle(
+                                                      fontSize: 10,
+                                                      fontWeight: FontWeight.w700,
+                                                      color: Theme.of(context).colorScheme.secondary,
+                                                      letterSpacing: 0.5,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 );
                               },
